@@ -1,0 +1,93 @@
+#+title: Regev's LWE Crypto System
+#+author: Laura 
+#+EPRESENT_FRAME_LEVEL: 3
+#+STARTUP: latexpreview
+
+* Intro
+*** On Lattice, Learning with Errors, Random Linear Codes and Cryptography
+
+ The main goal of this paper is show a reduction from 
+ some Lattices problems we believe to be hard 
+ (SVP and SIVP)
+ In the end a LWE Crypto System is presented.
+
+* Lattice Problems
+*** SVP
+sjbdhdvdalkddv
+*** SIVP
+ffflsdjkvb
+
+* LWE Problem
+*** Learning from Parity
+
+    The goal is to find $$ s \in \mathbb{Z}^n_2 $$ such that
+
+    $$ <s, a_i> \; \approx_\epsilon \; b_i \;\; (mod\; 2) $$
+
+    For $$ i \in \{1,...,n\} $$
+
+    Where $$ a_i \gets \mathbb{Z}^n_2 $$ uniformly
+and the equation holds with probability $$ 1 - \epsilon $$
+
+*** Learning with Errors
+
+    LWE is a generalization of LWP with two new parameters
+$$p \in \mathbb{N}$$ and $$\chi$$ a probability distribution on $$\mathbb{Z}_p$$ so that we have:
+
+    $$ <s, a_i> \; \approx_\chi \; b_i \;\; (mod\; p) $$
+    or
+    $$ <s, a_i> + e_i \; = \;  b_i \;\; (mod\; p) $$
+
+    Where $$ a_i \gets \mathbb{Z}^n_p $$ uniformly
+    and $$ e_i \gets \mathbb{Z} $$ according to $$\chi$$ 
+*** Ring-LWE
+
+    Let $$ R = \mathbb{Z}[x]/f(x) $$ be a polynomial ring and $$ R_q = R/qR $$
+
+    The definitions follow regular LWE but instead
+
+    of $$\mathbb{Z}^n_p$$ we have $$R_q^n$$
+
+* Main Theorem
+** Enunciation
+*** sdff
+akdjnkjfbvdfv
+*** Proof Main Concepts
+blablablabla
+
+* LWE Crypto System
+** Description
+*** Intro
+    
+    The system is parameterized by:
+    - $$n \in \mathbb{N}$$ : security parameter
+    - $$p,m \in \mathbb{N} $$
+    - $$\chi$$ a probability distribution on $$\mathbb{Z}_p$$
+
+    To guarantee both security and correctness
+    - Let $$m := (1+\epsilon)(n+1)$$
+    - Choose $$p$$ prime in  $$(n^2, 2n^2)$$
+    - $$\chi := \Psi_{\alpha(n)} $$ where
+    $$ \Psi_{\beta} $$ is the normal distribution with mean 0 and $$\rho = \frac{\beta}{\sqrt{2\pi}}$$ 
+    and $$ \alpha(n) := \frac{1}{\sqrt{n}\log^2{n}} $$
+*** Keys
+**** Private Key s
+     let $$ s \gets \mathhbb{Z}^n_p $$ uniformly
+**** Public key
+     - for $$i \in \{1,...,m\}$$ let $$ a_i \gets \mathhbb{Z}^n_p $$ uniformly
+     - let $$i \in \{1,...,m\}$$ let $$ e_i \gets_\chi \mathhbb{Z}_p $$ such that $$ \sum{e_i} < \left\lfloor\frac{p}{2}\right\rfloor $$  
+       and  $$b_i:=<a_i,s>+e_i$$ 
+     - The public key is $$(a_i, b_i)$$
+       
+*** Encryption
+    - Choose a random subset $$S \subset \{1,...,m\}$$
+    - To encrypt 0: $$\left(\sum_{i\in S}a_i , \sum_{i\in S}b_i\right) $$
+    - To encrypt 1: $$\left(\sum_{i\in S}a_i , \left\lfloor \frac{p}{2} \right\rfloor + \sum_{i\in S}b_i\right) $$ 
+*** Decryption
+    - Calculate $$x := b - <a,s>$$ where $$(a,b)$$
+      is the encrypted bit
+    - If $$ 0 < x < \left\lfloor \frac{p}{2} \right\rfloor $$ the bit is 0, otherwise is 1
+** Proof
+   
+** Coding!
+coding time
